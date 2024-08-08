@@ -37,6 +37,7 @@ module.exports = async (req, res) => {
     await newEmail.save();
     res.status(201).send('Email saved');
   } catch (error) {
+    console.error('Error saving email:', error);
     res.status(500).send('Server error');
   }
 };

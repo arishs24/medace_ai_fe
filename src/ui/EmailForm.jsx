@@ -14,6 +14,7 @@ const EmailForm = () => {
       setSubmitted(true);
     } catch (err) {
       setError('Failed to save email');
+      console.error('Error saving email:', err); // Log error details
     }
   };
 
