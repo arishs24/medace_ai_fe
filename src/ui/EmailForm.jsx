@@ -10,7 +10,7 @@ const EmailForm = () => {
     e.preventDefault();
     setError(''); // Clear previous errors
     try {
-      await axios.post('http://localhost:5001/api/save-email', { email });
+      await axios.post('/api/save-email', { email });
       setSubmitted(true);
     } catch (err) {
       setError('Failed to save email');
