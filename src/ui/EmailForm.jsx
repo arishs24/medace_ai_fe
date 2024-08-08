@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const EmailForm = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError(''); // Clear previous errors
-    // Original logic before adding save-email.js
-    console.log('Email submitted:', email);
-    setSubmitted(true);
+    try {
+      await axios.post('/api/save-email', { email });
+      setSubmitted(true);
+    } catch (err) {
+      setError('Failed to save email');
+    }
   };
 
   return (
